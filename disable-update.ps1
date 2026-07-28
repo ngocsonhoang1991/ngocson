@@ -1,5 +1,3 @@
-Stop Service Update Window Server 
-
 Stop-Service wuauserv -Force
 Set-Service wuauserv -StartupType Disabled
 
