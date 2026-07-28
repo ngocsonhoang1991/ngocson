@@ -8,4 +8,8 @@ Set-Service -Name "wuauserv" -StartupType Disabled
 Stop-Service -Name "UsoSvc" -Force -ErrorAction SilentlyContinue
 Set-Service -Name "UsoSvc" -StartupType Disabled
 
+# 3. Tat Update Assistant Service (neu co)
+Stop-Service -Name "waasmedicsvc" -Force -ErrorAction SilentlyContinue
+Set-Service -Name "waasmedicsvc" -StartupType Disabled
+
 Write-Host "Da vo hieu hoa thanh cong!" -ForegroundColor Green
