@@ -1,12 +1,11 @@
-Write-Host "Dang tien hanh tat service Windows Update..." -ForegroundColor Yellow
+Write-Host "Dang vo hieu hoa triet de Windows Update..." -ForegroundColor Yellow
 
-# Dung service Windows Update
+# 1. Tat Windows Update Service
 Stop-Service -Name "wuauserv" -Force -ErrorAction SilentlyContinue
-
-# Doi Startup type sang Disabled de khong tu khoi dong lai
 Set-Service -Name "wuauserv" -StartupType Disabled
 
-# Clear cac task tu dong bat lai update trong Task Scheduler (neu co)
-Get-ScheduledTask -TaskPath "\Microsoft\Windows\WindowsUpdate\*" | Disable-ScheduledTask -ErrorAction SilentlyContinue
+# 2. Tat Update Orchestrator Service (Ngan tu dong kich hoat lai)
+Stop-Service -Name "UsoSvc" -Force -ErrorAction SilentlyContinue
+Set-Service -Name "UsoSvc" -StartupType Disabled
 
-Write-Host "Da tat Windows Update thanh cong!" -ForegroundColor Green
+Write-Host "Da vo hieu hoa thanh cong!" -ForegroundColor Green
